@@ -202,6 +202,10 @@ Decision: proceed / narrow / stop
 
 ## 资源
 
+本仓库根目录即技能目录，`scripts/` 和 `references/` 与本文件同级。下方命令以安装到目标项目的 `.qoder/skills/guard-destructive-ops/` 为例；从本仓库根目录直接执行时，将脚本路径前缀替换为 `scripts/`。用户级安装应使用脚本的实际绝对路径。
+
+`--workspace` 只指定校验边界，不切换当前目录；相对目标路径按当前 shell 工作目录解析。`quarantine.sh` 依赖同目录的 `check_target.sh`，安装时请保留目录结构。
+
 - `scripts/check_target.sh`：只读路径校验器。默认只允许工作区内目标；工作区外必须显式加 `--allow-outside`，且仍拒绝盘根、主目录、系统目录、工作区祖先、`.git` 和凭据目录。目录、敏感文件、工作区外目标会给出警告，由 AI 自审决定是否继续。
 - `scripts/quarantine.sh`：仅用于工作区内目标；移动到 `.qoder/trash/<UTC>/`，不删除，支持 `--dry-run` 和恢复清单。它是“不确定内容”的选项，不是所有删除的强制流程。
 - `references/powershell-escapes.md`：PowerShell/cmd 转义陷阱与 Git Bash 对照，以及何时可以安全使用 PowerShell。
