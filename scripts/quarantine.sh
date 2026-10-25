@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
-# Moves exact targets into <workspace>/.qoder/trash/<UTC>/. Never deletes.
+# 将精确目标移入 <workspace>/.qoder/trash/<UTC>/，不执行删除。
+# 依赖同目录的 check_target.sh；--dry-run 不创建目录或移动文件。
+# 全部目标通过校验后才开始移动；执行中失败不会自动回滚已移动的目标。
 set -euo pipefail
 
 script_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)"

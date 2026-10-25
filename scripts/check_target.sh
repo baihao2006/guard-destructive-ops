@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
-# Read-only path guard for destructive operations.
+# 破坏性操作前的只读路径校验器，不执行删除或移动。
+# --workspace 仅设置校验边界；相对目标路径按当前工作目录解析。
+# 返回成功只表示路径检查通过，不保证目标存在或操作已获授权。
 set -euo pipefail
 
 die() { printf 'REFUSE: %s\n' "$*" >&2; exit 1; }
