@@ -1,5 +1,9 @@
 # PowerShell / cmd.exe 转义陷阱与 Git Bash 对照
 
+配套阅读：[技能规则](../SKILL.md) · [高危命令清单](dangerous-commands.md) · [安装与使用](../README.md)
+
+下方危险命令用于说明错误模式，请勿直接执行。脚本参数中的路径应使用 Git Bash 格式（例如 `/d/project/cache`），不要使用 `D:\project\cache`；路径含空格时始终加引号。
+
 ## 为什么优先 Git Bash
 
 PowerShell 命令通常先被外层 shell（Git Bash、cmd 或工具调用器）解析一次，再由 PowerShell 解析一次。两层解析叠加，引号、`$`、反引号、`;`、`&`、`|`、`[`、`]`、`{}` 和路径分隔符的语义都会变化。对删除、移动、覆盖这类操作，任何一次误解析都可能把目标扩大到父目录、盘根或错误文件。

@@ -1,5 +1,9 @@
 # 高危命令清单（自动化优先）
 
+配套阅读：[技能规则](../SKILL.md) · [PowerShell 转义说明](powershell-escapes.md) · [安装与使用](../README.md)
+
+本清单用于代理自审，不会自动拦截命令。路径预检使用 [check_target.sh](../scripts/check_target.sh)；需要保留未知内容时使用 [quarantine.sh](../scripts/quarantine.sh)。
+
 先判断目标范围，再决定是否执行：
 
 | 范围 | 规则 |
